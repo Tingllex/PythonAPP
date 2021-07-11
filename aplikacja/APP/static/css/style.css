@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: LatoLight;
+}
+
+#main {
+    width: 900px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+h1 {
+    width: 900px;
+    height: 80px;
+    background-color: deepskyblue;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+section#s1 {
+    width: 890px;
+    height: 700px;
+    padding: 5px;
+}
+
+footer {
+    background-color: white;
+    width: 900px;
+    border-top: 1px solid black;
+    text-align: center;
+}

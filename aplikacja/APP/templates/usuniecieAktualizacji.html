@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pl">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="main">
+        <header></header>
+        <section id="lewy">
+            <a href="/">wróć</a>
+        </section>
+        <section id="prawy">
+            <article>
+                <b>Czy na pewno chcesz usunąć aktualizację "{{ id_update.Nazwa }}"?</b><br>
+                <form method="post">
+                    {% csrf_token %}
+                    <br><button type="submit">Usuń aktualizację</button>
+                </form>
+            </article>
+        </section>
+        <footer>Escape from Tarkov app</footer>
+    </div>
+</body>
+</html>

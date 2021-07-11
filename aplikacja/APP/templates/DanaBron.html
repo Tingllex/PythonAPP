@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="pl">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/homeStyle.css' %}">
+</head>
+
+<body>
+<div class="cos2">
+    <div class="topnav" id="myTopnav">
+    <a href="/" >Strona główna</a>
+    <a href="/Bronie/">Bronie</a>
+    <a href="/Amunicja">Amunicja</a>
+    <a href="{% url 'dodajB' %}">dodaj broń</a>
+    <a href="{% url 'dodajA' %}">dodaj amunicję</a>
+    <a href="/aktualizacje">Aktualizacja</a>
+    <a href="/Bronie/">wróć</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+    </a>
+    </div>
+
+    <div class="cos" style="padding-left:16px">
+        <h2>Aplikacja bazodanowa</h2>
+        <p>Baza broni i amunicji z gry <b>Escape from Tarkov.</b></p>
+    </div>
+
+    <section id="login">
+        {% if user.is_authenticated %}
+            Witaj {{ user.username }}!
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
+            <p><a href="{% url 'signup' %}">Signup</a></p>
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% endif %}
+        {% endblock %}
+    </section>
+    <section id="s1">
+            <article>
+                <b>Nazwa: </b>{{ JednaBron.Nazwa }}<br>
+                <b>Rodzaj: </b>{{ JednaBron.Rodzaj }}<br>
+                <b>Typ amunicji: </b>{{ JednaBron.Typ_amunicji }}<br>
+                <b>Cena broni: </b>{{ JednaBron.Cena_broni }}<span>&#8381;</span><br>
+                <img src="{{ JednaBron.image.url }}" alt="Weapon" width="600" height="200"/><br>
+            </article>
+        </section>
+    <script>
+    function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+    }
+    </script>
+    </div>
+</body>
+</html>

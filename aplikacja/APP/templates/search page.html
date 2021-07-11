@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="pl">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/homeStyle.css' %}">
+</head>
+
+<body>
+<div class="cos2">
+    <div class="topnav" id="myTopnav">
+    <a href="/" >Strona główna</a>
+    <a href="/Bronie/">Bronie</a>
+    <a href="/Amunicja/">Amunicja</a>
+    <a href="{% url 'dodajB' %}">dodaj broń</a>
+    <a href="{% url 'dodajA' %}">dodaj amunicję</a>
+    <a href="/">wróć</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+    </a>
+    </div>
+
+    <div class="cos" style="padding-left:16px">
+        <h2>Aplikacja bazodanowa</h2>
+        <p>Baza broni i amunicji z gry <b>Escape from Tarkov.</b></p>
+    </div>
+
+    <section id="login">
+        {% if user.is_authenticated %}
+            Witaj {{ user.username }}!
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
+            <p><a href="{% url 'signup' %}">Signup</a></p>
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% endif %}
+        {% endblock %}
+    </section>
+
+        <h2>Wynik wyszukiwania:</h2><br>
+        <section id="s1">
+            <article>
+            {% if szukana or szukana2 or szukana3 or szukana4 or szukana5 %}
+                {% for x in szukana %}
+                    <a href="{% url 'danaB' x.id %}">{{ x.Nazwa }}</a><br>
+                    <img src="{{ x.image.url }}" alt="Weapon" width="450" height="150"/><br>
+                    <!--<img src="{% static bron.image %}" alt="Weapon" width="300" height="100"/><br>-->
+                {% endfor %}
+                {% for x in szukana2 %}
+                    <a href="{% url 'danaA' x.id %}">{{ x.Nazwa }}</a><br>
+                    <img src="{{ x.image.url }}" alt="Ammo" width="340" height="200"/><br>
+                {% endfor %}
+                {% for x in szukana3 %}
+                    <a href="{% url 'danaB' x.id %}">{{ x.Nazwa }}</a><br>
+                    <img src="{{ x.image.url }}" alt="Weapon" width="450" height="150"/><br>
+                {% endfor %}
+                {% for x in szukana4 %}
+                    <a href="{% url 'danaB' x.id %}">{{ x.Nazwa }}</a><br>
+                    <img src="{{ x.image.url }}" alt="Weapon" width="450" height="150"/><br>
+                {% endfor %}
+                {% for x in szukana5 %}
+                    <a href="{% url 'danaA' x.id %}">{{ x.Nazwa }}</a><br>
+                    <img src="{{ x.image.url }}" alt="Ammo" width="340" height="200"/><br>
+                {% endfor %}
+            {% else %}
+                Podana fraza nie została odnaleziona.
+            {% endif %}
+            </article>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+@font-face {
+    font-family: "LatoLight";
+    src: url("Lato-Light.eot") format("eot"),
+    url("Lato-Light.woff") format("woff"),
+    url("Lato-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: LatoLight;
+}
+
+#main {
+    width: 800px;
+    margin: 0 auto;
+    background: url(naglowek.png) no-repeat #e2e1e2;
+}
+
+header {
+    width: 800px;
+    height: 130px;
+}
+
+section#lewy {
+    width: 190px;
+    min-height: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* https://www.css3maker.com/css-3-rgba.html */
+    float: left;
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+#lewy a {
+    color: yellow;
+    text-decoration: none;
+    margin-left: 60px;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+#lewy a:hover {
+    border-right: 5px solid yellow;
+}
+
+section#prawy {
+    width: 500px;
+    min-height: 150px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    width: 794px;
+    color: white;
+    background-color: black;
+    clear: both;
+    font-size: 13px;
+    padding: 3px;
+    text-align: center;
+}
+
+article {
+    width: 490px;
+    min-height: 150px;
+    color: white;
+    margin-bottom: 5px;
+    clear: both;
+    padding: 5px;
+}

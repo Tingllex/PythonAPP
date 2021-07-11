@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <link rel="stylesheet"  href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div id="main">
+        <header></header>
+        <section id="lewy">
+            <!--<a href="/home/">bronie</a>-->
+            <a href="{% url 'wypisBroni' %}">pokaż bronie</a>
+        </section>
+        <section id="prawy">
+            <article>
+                <b>strona główna</b>
+            </article>
+        </section>
+        <footer>Tarkov app - <b>projekt</b></footer>
+    </div>
+</body>
+</html>
+
+

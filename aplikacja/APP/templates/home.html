@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="pl">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/homeStyle.css' %}">
+</head>
+
+<body>
+<div class="cos1">
+    <div class="topnav" id="myTopnav">
+    <a href="/" class="active">Strona główna</a>
+    <a href="/Bronie/">Bronie</a>
+    <a href="/Amunicja">Amunicja</a>
+    <a href="{% url 'dodajB' %}">dodaj broń</a>
+    <a href="{% url 'dodajA' %}">dodaj amunicję</a>
+    <a href="/aktualizacje">Aktualizacja</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+    </a>
+    </div>
+
+    <div class="cos" style="padding-left:16px">
+        <h2>Aplikacja bazodanowa</h2>
+        <p>Baza broni i amunicji z gry <b>Escape from Tarkov.</b></p>
+    </div>
+
+    <div class="wyszukiwarka">
+        <h4>Wyszukiwarka:</h4>
+        <form action="{% url 'search_result' %}" method="get">
+            <input name="query" type="text" placeholder="Search here.." >
+            <button type="submit" name="button">Submit</button>
+        </form>
+    </div>
+
+    <section id="login">
+        {% if user.is_authenticated %}
+            Witaj {{ user.username }}!
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
+            <p><a href="{% url 'signup' %}">Signup</a></p>
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% endif %}
+        {% endblock %}
+    </section>
+
+    <footer>Escape from Tarkov app</footer>
+    <script>
+    function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+    }
+    </script>
+    </div>
+<img src="{% static "EFT.png" %}" alt="My image" width=100% height=100% style="border:5px solid lightblue">
+</body>
+
+</html>
+
